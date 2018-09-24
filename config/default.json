@@ -1,0 +1,7 @@
+{
+	"BASE_URL": "https://rest.bandsintown.com/",
+	"SERVICES": {
+		"ARTISTS": "artists/:artistName?app_id=:app_id",
+		"EVENTS": "artists/:artistName/events?app_id=:app_id"
+	}
+}
