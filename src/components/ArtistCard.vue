@@ -116,6 +116,9 @@ export default {
       this.searchEvents(this.artist.name);
     },
   },
+  beforeUpdate() {
+    this.rating = 0;
+  },
 };
 </script>
 
