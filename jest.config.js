@@ -20,4 +20,8 @@ module.exports = {
     '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)',
   ],
   testURL: 'http://localhost/',
+  globals: {
+    APP_KEY: 'token',
+    BASE_URL: 'https://rest.bandsintown.com/',
+  },
 };
