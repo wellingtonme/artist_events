@@ -14,6 +14,7 @@ const mutations = {
 };
 const actions = {
   GET_ARTIST: async ({ commit, dispatch }, artistName) => {
+    dispatch('events/CLEAR_EVENTS', undefined, { root: true });
     const artist = await getArtist(artistName);
     commit('GET_ARTIST', artist);
     dispatch('app/SET_IS_LOADING', false, { root: true });

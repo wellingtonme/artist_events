@@ -5,6 +5,7 @@
     <search-field />
     <loader />
     <artist-card />
+    <event-list />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import SearchDescription from '@/components/SearchDescription.vue';
 import SearchField from '@/components/SearchField.vue';
 import Loader from '@/components/Loader.vue';
 import ArtistCard from '@/components/ArtistCard.vue';
+import EventList from '@/components/EventList.vue';
 
 export default {
   name: 'home',
@@ -24,6 +26,7 @@ export default {
     SearchField,
     Loader,
     ArtistCard,
+    EventList,
   },
 };
 </script>
@@ -35,6 +38,7 @@ export default {
   position fixed
   top 0
   left 0
+  overflow-y scroll
 }
 </style>
 

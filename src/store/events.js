@@ -24,6 +24,9 @@ const actions = {
     commit('GET_EVENTS', result);
     commit('SET_IS_SEARCHING_EVENTS', false);
   },
+  CLEAR_EVENTS: ({ commit }) => {
+    commit('GET_EVENTS', []);
+  },
 };
 
 export default {
