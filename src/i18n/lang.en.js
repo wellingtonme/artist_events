@@ -5,5 +5,6 @@ export default {
     artistTrackers: '{tracker_count} tracks recorded',
     artistUpcomingEvents: '{events_count} upcoming events',
     rateArtist: 'Rate this artist',
+    viewEvents: 'View Events',
   },
 };

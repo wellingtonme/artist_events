@@ -30,6 +30,18 @@
                       { events_count: this.artist.upcoming_event_count }
                     )
                   }}</div>
+                  <div class="view-events mt-4">
+                    <v-btn
+                      class="ml-0"
+                      outline
+                      round
+                      :loading="isSearchingEvents"
+                      :disabled="isSearchingEvents"
+                      @click="searchArtistEvents"
+                    >
+                      {{ $t('viewEvents') }}
+                    </v-btn>
+                  </div>
                 </div>
               </v-card-title>
             </v-flex>
@@ -45,7 +57,13 @@
           </v-layout>
           <v-divider light></v-divider>
           <v-card-actions class="pa3">
-            <span>{{ $t('rateArtist') }}</span>
+            <v-btn
+              flat
+              icon
+              @click="openFacebookPage"
+            >
+              <v-icon>mdi-facebook</v-icon>
+            </v-btn>
             <v-spacer />
             <v-rating
               v-model="rating"
@@ -60,7 +78,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { cond, always, equals, T, isEmpty } from 'ramda';
 
 export default {
@@ -74,6 +92,7 @@ export default {
     ...mapGetters({
       artist: 'artists/ARTIST',
       isLoading: 'app/IS_LOADING',
+      isSearchingEvents: 'events/IS_SEARCHING_EVENTS',
     }),
     avatarImgSize() {
       return cond([
@@ -84,6 +103,17 @@ export default {
     },
     hasToShow() {
       return (this.artist && !isEmpty(this.artist) && !this.isLoading);
+    },
+  },
+  methods: {
+    openFacebookPage() {
+      window.open(this.artist.facebook_page_url, '_blank');
+    },
+    ...mapActions({
+      searchEvents: 'events/GET_EVENTS',
+    }),
+    searchArtistEvents() {
+      this.searchEvents(this.artist.name);
     },
   },
 };
