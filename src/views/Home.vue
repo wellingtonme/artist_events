@@ -42,6 +42,10 @@ export default {
   top 0
   left 0
   overflow-y scroll
+  background-image url(https://images.pexels.com/photos/167480/pexels-photo-167480.jpeg?cs=srgb&dl=audience-band-concert-167480.jpg&fm=jpg)
+  box-shadow inset 2000px 0 0 0 rgba(0, 0, 0, 0.8)
+  background-position bottom
+  background-size cover
 }
 </style>
 
