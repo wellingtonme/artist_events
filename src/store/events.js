@@ -1,5 +1,13 @@
 /* eslint-disable no-shadow, no-param-reassign */
 import { getArtistEvents } from '@/data/event_model';
+import {
+  cond,
+  T,
+} from 'ramda';
+import {
+  hasError,
+  isNilOrEmpty,
+} from '@/utils/validations';
 
 const state = {
   events: [],
@@ -10,7 +18,7 @@ const getters = {
   IS_SEARCHING_EVENTS: state => state.isSearchingEvents,
 };
 const mutations = {
-  GET_EVENTS: (state, payload) => {
+  SET_EVENTS: (state, payload) => {
     state.events = payload;
   },
   SET_IS_SEARCHING_EVENTS: (state, payload) => {
@@ -18,14 +26,21 @@ const mutations = {
   },
 };
 const actions = {
-  GET_EVENTS: async ({ commit }, artistName) => {
+  GET_EVENTS: async ({ commit, dispatch }, artistName) => {
+    dispatch('CLEAR_EVENTS');
     commit('SET_IS_SEARCHING_EVENTS', true);
+
     const result = await getArtistEvents(artistName);
-    commit('GET_EVENTS', result);
+    cond([
+      [hasError, () => dispatch('app/SET_ERROR', 'errors.failToLoadEvents', { root: true })],
+      [isNilOrEmpty, () => dispatch('app/SET_ERROR', 'errors.eventsNotFound', { root: true })],
+      [T, () => commit('SET_EVENTS', result)],
+    ])(result);
+
     commit('SET_IS_SEARCHING_EVENTS', false);
   },
   CLEAR_EVENTS: ({ commit }) => {
-    commit('GET_EVENTS', []);
+    commit('SET_EVENTS', []);
   },
 };
 

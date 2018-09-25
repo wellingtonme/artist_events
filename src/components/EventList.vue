@@ -56,7 +56,6 @@ export default {
       isLoadingEvents: 'events/IS_SEARCHING_EVENTS',
     }),
     hasToShowEvents() {
-      console.log((!isEmpty(this.allEvents) && !this.isLoadingEvents));
       return (!isEmpty(this.allEvents) && !this.isLoadingEvents);
     },
     events() {

@@ -5,6 +5,8 @@ export const getArtist = async (artistName) => {
   try {
     return await request(ARTISTS_SERVICE, { artistName });
   } catch (ex) {
-    return {};
+    return {
+      error: ex,
+    };
   }
 };

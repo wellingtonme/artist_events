@@ -6,6 +6,7 @@
     <loader />
     <artist-card />
     <event-list />
+    <error-messages />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import SearchField from '@/components/SearchField.vue';
 import Loader from '@/components/Loader.vue';
 import ArtistCard from '@/components/ArtistCard.vue';
 import EventList from '@/components/EventList.vue';
+import ErrorMessages from '@/components/ErrorMessages.vue';
 
 export default {
   name: 'home',
@@ -27,6 +29,7 @@ export default {
     Loader,
     ArtistCard,
     EventList,
+    ErrorMessages,
   },
 };
 </script>

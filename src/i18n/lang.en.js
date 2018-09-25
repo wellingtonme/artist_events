@@ -6,5 +6,12 @@ export default {
     artistUpcomingEvents: '{events_count} upcoming events',
     rateArtist: 'Rate this artist',
     viewEvents: 'View Events',
+    errors: {
+      artistNotFound: 'Sorry! We could not find your artist.',
+      eventsNotFound: 'Ops! Your artist does not have any upcomming event!',
+      failToLoadArtist: 'Sorry! Something went wrong.',
+      failToLoadEvents: 'Sorry! Something went wrong.',
+      closeButton: 'close',
+    },
   },
 };
